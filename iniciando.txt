@@ -17,6 +17,7 @@ git commit -m “mensaje”: guardar el archivo en git con un mensaje.
 git branch: crear una nueva rama.
 git checkout: moverse entre ramas.
 git merge: tiene dos usos. Uno es la fusión de ramas, funcionando como un commit en la rama actual, trayendo la rama indicada. Su otro uso es guardar los cambios de un servidor remoto en nuestro directorio.
+git merge --abort: Se usa para abortar un merge.
 git checkout “codigo de version” “nombre del archivo”: volver a la última versión de la que se ha hecho commit.
 git reset: vuelve al pasado sin posibilidad de volver al futuro, se debe usar con especificaciones.
 git reset --soft: vuelve a la versión en el repositorio, pero guarda los cambios en staging. Así, podemos aplicar actualizaciones a un nuevo commit.
