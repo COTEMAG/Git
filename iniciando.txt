@@ -1,5 +1,19 @@
 -----------------------------------------------------------------------
 
+* Comandos básicos del sistema.
+
+mkdir nombre_carpeta - Crea una carpeta o directorio nuevo                          ej; mkdir primera_carpeta
+rmdir nombre_carpeta - Elimina una carpeta o directorio (debe estar vacio)          ej; rmdir primera_carpeta
+rm nombre_archivo - Elimina archivos o carpetas                                     ej; rm archivo.txt
+touch nombre_archivo - Crea un archivo vacio                                        ej; touch archivo_nuevo.txt
+ls - Lista de archivos y carpetas                                           
+cd - Cambiar de carpeta
+pwd - Muestra la ruta actual
+cat nombre_archivo - Muestra el contenido del archivo                               ej; cat archivo_nuevo.txt
+code . - Abre la carpeta actual en Visual Studio Code
+
+-----------------------------------------------------------------------
+
 * Configuración
 
 git config --global user.name "Nombre"
