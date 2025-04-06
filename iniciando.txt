@@ -1,15 +1,20 @@
- Configuración
- 
- git config --global user.name "Nombre"
- git config --global user.email correo@mail.com
- git config --global core.editor "code --wait"
- git config --global core.autocrlf true
- git config --global init.defaultBranch main
- 
- Ver configuración
- git config --global -e
+-----------------------------------------------------------------------
 
-Comandos básicos
+* Configuración
+
+git config --global user.name "Nombre"
+git config --global user.email correo@mail.com
+git config --global core.editor "code --wait"
+git config --global core.autocrlf true
+git config --global init.defaultBranch main
+
+* Para ver la configuración, usa
+
+git config --global -e
+
+-----------------------------------------------------------------------
+
+* Comandos básicos de Git
 
 git init: crear un repositorio.
 git add: agregar un archivo a staging.
@@ -31,9 +36,13 @@ git show: cambios históricos y específicos hechos en un archivo.
 git diff “codigo de version 1” “codigo de version 2”: comparar cambios entre versiones.
 git diff: comparar directorio con staging.
 
-Comandos basicos de GitHub
+-----------------------------------------------------------------------
+
+* Comandos basicos de GitHub
 
 git remote add origin "url del repositorio remoto": se usa para agregar una fuente de repositorio remota.
 git remote -v: se usa para confirmar si la fuente se añadio.
 git pull origin main: se usa para hacer fech y merge de la fuente a local al mismo tiempo.
 git push origin main: se usa para cargar los archivos a GitHub.
+
+-----------------------------------------------------------------------
