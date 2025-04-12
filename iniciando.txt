@@ -1,62 +1,112 @@
------------------------------------------------------------------------
 
-* Comandos básicos del sistema.
+# Comandos Básicos del Sistema de GIT
 
-mkdir nombre_carpeta - Crea una carpeta o directorio nuevo                          ej; mkdir primera_carpeta
-rmdir nombre_carpeta - Elimina una carpeta o directorio (debe estar vacio)          ej; rmdir primera_carpeta
-rm nombre_archivo - Elimina archivos o carpetas                                     ej; rm archivo.txt
-touch nombre_archivo - Crea un archivo vacio                                        ej; touch archivo_nuevo.txt
-ls - Lista de archivos y carpetas                                           
-cd - Cambiar de carpeta
-pwd - Muestra la ruta actual
-cat nombre_archivo - Muestra el contenido del archivo                               ej; cat archivo_nuevo.txt
+## Navegación y Gestión de Directorios:
+
+mkdir nombre_carpeta - Crea una carpeta o directorio nuevo (Ej: mkdir proyectos)
+rmdir nombre_carpeta - Elimina una carpeta vacía (Ej: rmdir carpeta_vacia)
+rm nombre_archivo - Elimina un archivo (Ej: rm archivo.txt)
+touch nombre_archivo - Crea un archivo vacío (Ej: touch index.html)
+ls - Lista archivos y carpetas del directorio actual
+ls -l - Muestra lista detallada con permisos, tamaños y fechas
+ls -a - Muestra también archivos ocultos (que empiezan con punto)
+cd ruta - Cambia al directorio especificado (Ej: cd documentos)
+cd .. - Sube un nivel en la estructura de directorios
+pwd - Muestra la ruta completa del directorio actual
+
+## Manipulación de Archivos:
+
+cat nombre_archivo - Muestra el contenido de un archivo (Ej: cat config.json)
+cp origen destino - Copia archivos o directorios (Ej: cp datos.txt backup/)
+mv origen destino - Mueve o renombra archivos (Ej: mv viejo.txt nuevo.txt)
 code . - Abre la carpeta actual en Visual Studio Code
+clear - Limpia la pantalla de la terminal
 
------------------------------------------------------------------------
+## Configuración Básica:
 
-* Configuración
+git config --global user.name "Tu Nombre"
+git config --global user.email tucorreo@ejemplo.com
 
-git config --global user.name "Nombre"
-git config --global user.email correo@mail.com
+### Editor de preferencia
 git config --global core.editor "code --wait"
-git config --global core.autocrlf true
+
+### Manejo de saltos de línea
+git config --global core.autocrlf true   # Para Windows
+git config --global core.autocrlf input  # Para Linux/Mac
+
+### Rama principal
 git config --global init.defaultBranch main
 
-* Para ver la configuración, usa
-
+### Ver toda la configuración
 git config --global -e
 
------------------------------------------------------------------------
 
-* Comandos básicos de Git
+## Iniciar y Gestionar Repositorios:
 
-git init: crear un repositorio.
-git add: agregar un archivo a staging.
-git commit -m “mensaje”: guardar el archivo en git con un mensaje.
-git branch: crear una nueva rama.
-git checkout: moverse entre ramas.
-git merge: tiene dos usos. Uno es la fusión de ramas, funcionando como un commit en la rama actual, trayendo la rama indicada. Su otro uso es guardar los cambios de un servidor remoto en nuestro directorio.
-git merge --abort: Se usa para abortar un merge.
-git checkout “codigo de version” “nombre del archivo”: volver a la última versión de la que se ha hecho commit.
-git reset: vuelve al pasado sin posibilidad de volver al futuro, se debe usar con especificaciones.
-git reset --soft: vuelve a la versión en el repositorio, pero guarda los cambios en staging. Así, podemos aplicar actualizaciones a un nuevo commit.
-git reset --hard: todo vuelve a su versión anterior
-git reset HEAD: saca los cambios de staging, pero no los borra. Es lo opuesto a git add.
-git rm: elimina los archivos, pero no su historial. Si queremos recuperar algo, solo hay que regresar. se utiliza así:git rm --cached elimina los archivos en staging pero los mantiene en el disco duro.git rm --force elimina los archivos de git y del disco duro.
-git status: estado de archivos en el repositorio.
-git log: historia entera del archivo.
-git log --stat: cambios específicos en el archivo a partir de un commit.
-git show: cambios históricos y específicos hechos en un archivo.
-git diff “codigo de version 1” “codigo de version 2”: comparar cambios entre versiones.
-git diff: comparar directorio con staging.
+git init - Inicializa un nuevo repositorio Git
+git clone url - Clona un repositorio remoto (Ej: git clone https://github.com/usuario/repo.git)
+git status - Muestra el estado actual de archivos (modificados, preparados, etc.)
 
------------------------------------------------------------------------
+## Gestión de Cambios:
 
-* Comandos basicos de GitHub
+git add archivo - Agrega un archivo específico al área de preparación (Ej: git add index.html)
+git add . - Agrega todos los archivos modificados
+git commit -m "mensaje" - Guarda los cambios en el repositorio con un mensaje
+git commit --amend - Modifica el último commit (mensaje o contenido)
 
-git remote add origin "url del repositorio remoto": se usa para agregar una fuente de repositorio remota.
-git remote -v: se usa para confirmar si la fuente se añadio.
-git pull origin main: se usa para hacer fech y merge de la fuente a local al mismo tiempo.
-git push origin main: se usa para cargar los archivos a GitHub.
+## Historial y Diferencias:
 
------------------------------------------------------------------------
+git log - Muestra el historial de commits
+git log --oneline - Historial resumido en una línea por commit
+git log --graph - Historial gráfico con ramificaciones
+git show commit - Muestra detalles de un commit específico
+git diff - Diferencias entre directorio de trabajo y área de preparación
+git diff --staged - Diferencias entre área de preparación y último commit
+git diff commit1 commit2 - Compara dos commits
+
+## Ramificaciones:
+
+git branch - Lista las ramas locales
+git branch -a - Lista todas las ramas (locales y remotas)
+git branch nombre - Crea una nueva rama (Ej: git branch feature/login)
+git branch -D nombre - Fuerza la eliminación de una rama
+git checkout rama - Cambia a una rama existente
+git checkout -b nombre - Crea y cambia a una nueva rama
+git switch rama - Cambia a una rama (Git moderno)
+git switch -c nombre - Crea y cambia a una nueva rama (Git moderno)
+
+## Fusionar:
+
+git merge rama - Fusiona una rama con la rama actual
+git merge --abort - Cancela un proceso de fusión con conflictos
+git rebase rama - Reaplica los cambios de la rama actual sobre otra
+git rebase -i HEAD~n - Rebase interactivo de los últimos n commits
+
+## Deshacer Cambios:
+
+git restore archivo - Descarta cambios en un archivo (Git moderno)
+git restore --staged archivo - Desagrega un archivo del área de preparación
+git reset archivo - Saca un archivo del área de preparación
+git reset --soft HEAD~1 - Deshace el último commit pero conserva los cambios
+git reset --mixed HEAD~1 - Deshace el último commit y desagrega cambios
+git reset --hard HEAD~1 - Deshace el último commit y descarta todos los cambios
+git revert commit - Crea un nuevo commit que revierte los cambios de otro
+
+
+## Gestión de Remotos:
+
+git remote -v - Muestra las fuentes remotas configuradas
+git remote add nombre url - Añade un repositorio remoto
+git remote add origin url - Añade el repositorio principal remoto
+git remote remove nombre - Elimina una fuente remota
+
+## Sincronización:
+
+git fetch remoto - Descarga cambios del remoto sin fusionar
+git pull remoto rama - Descarga y fusiona cambios del remoto (Ej: git pull origin main)
+git pull --rebase remoto rama - Descarga y reaplica cambios locales encima
+git push remoto rama - Envía los commits locales al repositorio remoto
+git push -u remoto rama - Envía y establece la rama remota para seguimiento
+git push --force - Fuerza el envío de cambios (usar con precaución)
+git push --tags - Envía etiquetas al remoto
+
