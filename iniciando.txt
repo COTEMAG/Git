@@ -1,15 +1,34 @@
- Configuración
- 
- git config --global user.name "Nombre"
- git config --global user.email correo@mail.com
- git config --global core.editor "code --wait"
- git config --global core.autocrlf true
- git config --global init.defaultBranch main
- 
- Ver configuración
- git config --global -e
+-----------------------------------------------------------------------
 
-Comandos básicos
+* Comandos básicos del sistema.
+
+mkdir nombre_carpeta - Crea una carpeta o directorio nuevo                          ej; mkdir primera_carpeta
+rmdir nombre_carpeta - Elimina una carpeta o directorio (debe estar vacio)          ej; rmdir primera_carpeta
+rm nombre_archivo - Elimina archivos o carpetas                                     ej; rm archivo.txt
+touch nombre_archivo - Crea un archivo vacio                                        ej; touch archivo_nuevo.txt
+ls - Lista de archivos y carpetas                                           
+cd - Cambiar de carpeta
+pwd - Muestra la ruta actual
+cat nombre_archivo - Muestra el contenido del archivo                               ej; cat archivo_nuevo.txt
+code . - Abre la carpeta actual en Visual Studio Code
+
+-----------------------------------------------------------------------
+
+* Configuración
+
+git config --global user.name "Nombre"
+git config --global user.email correo@mail.com
+git config --global core.editor "code --wait"
+git config --global core.autocrlf true
+git config --global init.defaultBranch main
+
+* Para ver la configuración, usa
+
+git config --global -e
+
+-----------------------------------------------------------------------
+
+* Comandos básicos de Git
 
 git init: crear un repositorio.
 git add: agregar un archivo a staging.
@@ -31,9 +50,13 @@ git show: cambios históricos y específicos hechos en un archivo.
 git diff “codigo de version 1” “codigo de version 2”: comparar cambios entre versiones.
 git diff: comparar directorio con staging.
 
-Comandos basicos de GitHub
+-----------------------------------------------------------------------
+
+* Comandos basicos de GitHub
 
 git remote add origin "url del repositorio remoto": se usa para agregar una fuente de repositorio remota.
 git remote -v: se usa para confirmar si la fuente se añadio.
 git pull origin main: se usa para hacer fech y merge de la fuente a local al mismo tiempo.
 git push origin main: se usa para cargar los archivos a GitHub.
+
+-----------------------------------------------------------------------
