@@ -50,6 +50,15 @@ git show: cambios históricos y específicos hechos en un archivo.
 git diff “codigo de version 1” “codigo de version 2”: comparar cambios entre versiones.
 git diff: comparar directorio con staging.
 
+
+git revert: crea un nuevo commit que deshace los cambios de un commit específico, es útil para deshacer cambios de forma segura en repositorios compartidos
+
+git tag: se utiliza para crear una etiqueta en un commit especifico, lo que permite identificar versiones o hitos importantes en el historial del proyecto.
+EJEMPLO; git tag -a v1.0 -m "primera version"
+
+Si se quiere colocar una etiqueta a un commit en especifico se debe colocar el hash del commit, luego de la version. De este modo
+EJEMPLO; git tag -a v1.0 (# commit) -m "mensaje del tag"
+
 -----------------------------------------------------------------------
 
 * Comandos basicos de GitHub
