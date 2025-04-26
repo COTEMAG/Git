@@ -18,12 +18,12 @@ git init
 ```
 git config --global user.name "Tu Nombre"
 ```
-*Establece tu nombre de usuario para todos los repositorios de Git en tu máquina*
+*Establece tu nombre de usuario para todos los repositorios de Git de tu area global (computador)*
 
 ```
 git config --global user.email "tucorreo@ejemplo.com"
 ```
-*Configura tu correo electrónico para identificar tus commits*
+*Configura tu correo electrónico para identificar tus commits, o quien los hace*
 
 ## 2. Creación y Seguimiento de Archivos
 
@@ -41,12 +41,12 @@ touch archivo1.txt
 ```
 git status
 ```
-*Muestra el estado actual del repositorio. Veremos que archivo1.txt aparece como "Untracked file" (archivo sin seguimiento)*
+*Muestra el estado actual del repositorio. Veremos que archivo1.txt aparece como "Untracked file" (archivo no cargado en el area de preparacion)*
 
 ```
 git add archivo1.txt
 ```
-*Añade el archivo al área de preparación (staging area). El archivo ahora está listo para ser incluido en el próximo commit*
+*Añade el archivo al área de preparación (staging area). El archivo ahora está listo para ser subido en el próximo commit*
 
 ```
 git status
@@ -56,12 +56,12 @@ git status
 ```
 git commit -m "Añadida receta de gazpacho"
 ```
-*Crea un nuevo commit con los cambios preparados y un mensaje descriptivo. Este commit contiene una instantánea del archivo en este momento*
+*Crea un nuevo commit con los cambios preparados y un mensaje descriptivo.*
 
 ## 3. Modificación de Archivos y Visualización de Cambios
 
 ```
-"- 1 cebolla pequeña" >> archivo1.txt
+"- 1 cebolla pequeña" 
 ```
 *Modificamos el archivo añadiendo un ingrediente más*
 
@@ -90,7 +90,7 @@ git commit -m "Añadido ingrediente a la receta de gazpacho"
 ```
 git branch
 ```
-*Lista todas las ramas del repositorio. Veremos solo "main" o "master" con un asterisco indicando que es la rama actual*
+*Muestra todas las ramas del repositorio. Veremos solo "main" o "master" con un asterisco indicando que es la rama actual*
 
 ```
 git branch postres
@@ -100,7 +100,7 @@ git branch postres
 ```
 git switch postres
 ```
-*Cambia a la rama "postres". En versiones antiguas de Git, usaríamos "git checkout postres"*
+*Cambia a la rama "postres". En versiones antiguas de Git, versiones que solo los viejos usan, usaríamos "git checkout postres"*
 
 ```
 touch archivo2.txt
@@ -151,6 +151,7 @@ git log --oneline
 ```
 *Muestra el historial resumido, un commit por línea, identificando cada commit con un hash abreviado*
 
+
 ```
 git show HEAD
 ```
@@ -175,7 +176,7 @@ git restore archivo1.txt
 
 ```
 touch archivo3.txt
-"Archivo temporal que no quiero" > archivo3.txt
+"Archivo temporal que no quiero"
 git add archivo3.txt
 ```
 *Creamos un archivo y lo añadimos al área de preparación*
@@ -209,7 +210,7 @@ git commit -m "Receta incompleta"
 "- 400g de arroz
 - Azafrán
 - Caldo de pescado
-- Mariscos variados" >> archivo4.txt
+- Mariscos variados" 
 ```
 *Completamos la receta*
 
@@ -309,7 +310,7 @@ git commit -m "Añadido archivo6.txt"
 *Creamos un archivo y lo confirmamos*
 
 ```
-echo "Cambio que luego querré revertir" > archivo6.txt
+"Cambio que luego querré revertir"
 git add archivo6.txt
 git commit -m "Cambio problemático en archivo6.txt"
 ```
@@ -331,16 +332,15 @@ git revert [hash-del-commit]
 git branch -d postres
 ```
 *Elimina la rama "postres" después de haberla fusionado con main*
+```
+git branch -D rama - *Fuerza la eliminación de una rama (sin haber fusionado)*
+```
 
 ```
 git checkout -b nueva-funcionalidad
 ```
 *Crea y cambia a una nueva rama en un solo paso*
 
-```
-git branch -a
-```
-*Lista todas las ramas (locales y remotas)*
 
 ## 14. Trabajo Colaborativo
 
