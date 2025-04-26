@@ -34,7 +34,7 @@ touch archivo1.txt
 - 1 pimiento verde
 - 1 pepino
 - 1 diente de ajo
-- Aceite de oliva, vinagre y sal" > archivo1.txt
+- Aceite de oliva, vinagre y sal"
 ```
 *Creamos un archivo de texto y añadimos contenido*
 
@@ -108,7 +108,7 @@ touch archivo2.txt
 - 4 huevos
 - 500ml de leche
 - 150g de azúcar
-- Esencia de vainilla" > archivo2.txt
+- Esencia de vainilla"
 ```
 *Creamos un nuevo archivo en la rama postres*
 
@@ -159,7 +159,7 @@ git show HEAD
 ## 7. Deshacer Cambios
 
 ```
-"Este es un cambio que no quiero mantener" >> archivo1.txt
+"Este es un cambio que no quiero mantener" 
 ```
 *Hacemos un cambio en archivo1.txt que luego queremos descartar*
 
@@ -199,7 +199,7 @@ git status
 
 ```
 touch archivo4.txt
-"Receta de Paella" > archivo4.txt
+"Receta de Paella"
 git add archivo4.txt
 git commit -m "Receta incompleta"
 ```
@@ -267,7 +267,7 @@ git push origin v1.1
 
 ```
 touch archivo5.txt
-"Este es un archivo que añadí por error" > archivo5.txt
+"Este es un archivo que añadí por error"
 git add archivo5.txt
 git commit -m "Archivo añadido por error"
 ```
@@ -302,7 +302,7 @@ rm archivo5.txt
 
 ```
 touch archivo6.txt
-"Contenido inicial" > archivo6.txt
+"Contenido inicial"
 git add archivo6.txt
 git commit -m "Añadido archivo6.txt"
 ```
