@@ -92,10 +92,6 @@ git branch nombre - *Crea una nueva rama*
 
 git branch -d rama - *Elimina una rama (después de fusionar)*
 
-git rebase rama - *Reaplica los cambios de la rama actual sobre otra (historial más limpio)*
-
-git rebase -i HEAD~n - *Rebase interactivo para reorganizar, editar o combinar los últimos n commits*
-
 ## Etiquetas (Tags)
 
 git tag - *Lista todas las etiquetas existentes*
