@@ -29,7 +29,7 @@ git config --global user.email "tucorreo@ejemplo.com"
 
 ```
 touch archivo1.txt
-echo "Receta de Gazpacho:
+"Receta de Gazpacho:
 - 1kg de tomates maduros
 - 1 pimiento verde
 - 1 pepino
@@ -61,7 +61,7 @@ git commit -m "Añadida receta de gazpacho"
 ## 3. Modificación de Archivos y Visualización de Cambios
 
 ```
-echo "- 1 cebolla pequeña" >> archivo1.txt
+"- 1 cebolla pequeña" >> archivo1.txt
 ```
 *Modificamos el archivo añadiendo un ingrediente más*
 
@@ -104,7 +104,7 @@ git switch postres
 
 ```
 touch archivo2.txt
-echo "Receta de Flan:
+"Receta de Flan:
 - 4 huevos
 - 500ml de leche
 - 150g de azúcar
@@ -159,7 +159,7 @@ git show HEAD
 ## 7. Deshacer Cambios
 
 ```
-echo "Este es un cambio que no quiero mantener" >> archivo1.txt
+"Este es un cambio que no quiero mantener" >> archivo1.txt
 ```
 *Hacemos un cambio en archivo1.txt que luego queremos descartar*
 
@@ -175,7 +175,7 @@ git restore archivo1.txt
 
 ```
 touch archivo3.txt
-echo "Archivo temporal que no quiero" > archivo3.txt
+"Archivo temporal que no quiero" > archivo3.txt
 git add archivo3.txt
 ```
 *Creamos un archivo y lo añadimos al área de preparación*
@@ -199,14 +199,14 @@ git status
 
 ```
 touch archivo4.txt
-echo "Receta de Paella" > archivo4.txt
+"Receta de Paella" > archivo4.txt
 git add archivo4.txt
 git commit -m "Receta incompleta"
 ```
 *Creamos un archivo, lo añadimos y hacemos un commit*
 
 ```
-echo "- 400g de arroz
+"- 400g de arroz
 - Azafrán
 - Caldo de pescado
 - Mariscos variados" >> archivo4.txt
@@ -267,7 +267,7 @@ git push origin v1.1
 
 ```
 touch archivo5.txt
-echo "Este es un archivo que añadí por error" > archivo5.txt
+"Este es un archivo que añadí por error" > archivo5.txt
 git add archivo5.txt
 git commit -m "Archivo añadido por error"
 ```
@@ -302,7 +302,7 @@ rm archivo5.txt
 
 ```
 touch archivo6.txt
-echo "Contenido inicial" > archivo6.txt
+"Contenido inicial" > archivo6.txt
 git add archivo6.txt
 git commit -m "Añadido archivo6.txt"
 ```
