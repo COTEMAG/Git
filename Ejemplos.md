@@ -1,272 +1,360 @@
-# Guía de Flujo de Trabajo con Git: Ejemplo Práctico
+# Ejemplo Práctico de Flujo de Trabajo con Git
 
-En este archivo habran ejemplos que puedes usar y poner en practica para mejorar tu habilidad en el mundo de GIT
+A continuación te presento un ejemplo paso a paso que muestra el uso de los comandos Git más importantes en un flujo de trabajo típico.
 
-## Iniciar y Configurar un Repositorio
+## 1. Configuración Inicial
 
-### Configuración inicial
+```
+mkdir proyecto-recetas
+cd proyecto-recetas
+```
+*Creamos un directorio para nuestro proyecto y nos movemos a él*
 
-git config --global user.name "Chef Programador" - *Establecemos nuestro nombre de usuario*
+```
+git init
+```
+*Inicializa un repositorio Git vacío en el directorio actual. Crea una carpeta oculta .git que contendrá toda la información del repositorio*
 
-git config --global user.email "chef@programador.com" - *Configuramos nuestro email*
+```
+git config --global user.name "Tu Nombre"
+```
+*Establece tu nombre de usuario para todos los repositorios de Git en tu máquina*
 
-mkdir recetas-cocina - *Creamos una carpeta para nuestro proyecto*
+```
+git config --global user.email "tucorreo@ejemplo.com"
+```
+*Configura tu correo electrónico para identificar tus commits*
 
-cd recetas-cocina - *Nos movemos a la carpeta creada*
+## 2. Creación y Seguimiento de Archivos
 
-git init - *Inicializamos un repositorio Git vacío en la carpeta actual*
+```
+touch archivo1.txt
+echo "Receta de Gazpacho:
+- 1kg de tomates maduros
+- 1 pimiento verde
+- 1 pepino
+- 1 diente de ajo
+- Aceite de oliva, vinagre y sal" > archivo1.txt
+```
+*Creamos un archivo de texto y añadimos contenido*
 
-### Creación de archivos iniciales
+```
+git status
+```
+*Muestra el estado actual del repositorio. Veremos que archivo1.txt aparece como "Untracked file" (archivo sin seguimiento)*
 
-touch archivo1.txt - *Creamos nuestro primer archivo*
+```
+git add archivo1.txt
+```
+*Añade el archivo al área de preparación (staging area). El archivo ahora está listo para ser incluido en el próximo commit*
 
-cat > archivo1.txt - *Añadimos contenido al archivo*
-Receta: Tortilla Española
-Ingredientes:
-- 4 patatas medianas
-- 6 huevos
-- 1 cebolla (opcional)
-- Aceite de oliva
-- Sal al gusto
+```
+git status
+```
+*Ahora muestra archivo1.txt como "Changes to be committed" (cambios por confirmar)*
 
-Preparación:
-1. Pelar y cortar las patatas en rodajas finas
-2. Freír a fuego lento hasta que estén tiernas
-3. Batir los huevos y mezclar con las patatas
-4. Cuajar la tortilla por ambos lados
+```
+git commit -m "Añadida receta de gazpacho"
+```
+*Crea un nuevo commit con los cambios preparados y un mensaje descriptivo. Este commit contiene una instantánea del archivo en este momento*
 
-git status - *Verificamos el estado del repositorio: nos muestra archivo1.txt como sin seguimiento*
+## 3. Modificación de Archivos y Visualización de Cambios
 
-git add archivo1.txt - *Añadimos el archivo al área de preparación*
+```
+echo "- 1 cebolla pequeña" >> archivo1.txt
+```
+*Modificamos el archivo añadiendo un ingrediente más*
 
-git commit -m "Añadida receta de tortilla española" - *Creamos nuestro primer commit*
+```
+git status
+```
+*Muestra que archivo1.txt ha sido modificado pero los cambios no están preparados*
 
-## Gestión de Ramas y Cambios
+```
+git diff archivo1.txt
+```
+*Muestra las diferencias entre el archivo en el directorio de trabajo y la versión en el último commit. Veremos la línea añadida destacada*
 
-git checkout -b "postres" - *Creamos y cambiamos a una nueva rama para postres*
+```
+git add archivo1.txt
+```
+*Añade los cambios al área de preparación*
 
-touch archivo2.txt - *Creamos un archivo para una receta de postre*
+```
+git commit -m "Añadido ingrediente a la receta de gazpacho"
+```
+*Crea un nuevo commit con los cambios*
 
-cat > archivo2.txt - *Añadimos contenido al archivo*
-Receta: Flan de Huevo
-Ingredientes:
-- 5 huevos
+## 4. Creación y Gestión de Ramas
+
+```
+git branch
+```
+*Lista todas las ramas del repositorio. Veremos solo "main" o "master" con un asterisco indicando que es la rama actual*
+
+```
+git branch postres
+```
+*Crea una nueva rama llamada "postres" pero no cambia a ella*
+
+```
+git switch postres
+```
+*Cambia a la rama "postres". En versiones antiguas de Git, usaríamos "git checkout postres"*
+
+```
+touch archivo2.txt
+echo "Receta de Flan:
+- 4 huevos
 - 500ml de leche
 - 150g de azúcar
-- Esencia de vainilla
-
-Preparación:
-1. Caramelizar 100g de azúcar en un molde
-2. Batir los huevos con la leche y el resto de azúcar
-3. Verter en el molde y hornear al baño maría
-4. Refrigerar antes de servir
-
-git add archivo2.txt - *Añadimos el archivo al área de preparación*
-
-git commit -m "Añadida receta de flan de huevo" - *Creamos un commit en la rama postres*
-
-git switch main - *Volvemos a la rama principal*
-
-touch archivo3.txt - *Creamos un nuevo archivo en la rama main*
-
-cat > archivo3.txt - *Añadimos contenido al archivo*
-Receta: Paella Valenciana
-Ingredientes:
-- 400g de arroz bomba
-- 1 conejo troceado
-- 200g de judías verdes
-- 200g de garrofón
-- Azafrán y pimentón
-- Caldo de pollo
-- Aceite de oliva y sal
-
-Preparación:
-1. Sofreír la carne en la paellera
-2. Añadir las verduras y rehogar
-3. Incorporar el arroz y el caldo caliente
-4. Cocinar a fuego medio-alto 10 minutos
-5. Bajar el fuego y cocinar 8 minutos más
-6. Dejar reposar tapada con un paño
-
-git add archivo3.txt - *Añadimos el archivo al área de preparación*
-
-git commit -m "Añadida receta de paella valenciana" - *Creamos otro commit en main*
-
-## Fusión de Ramas
-
-git merge postres - *Fusionamos la rama postres a la rama main*
-
-## Modificar Archivos y Gestionar Cambios
-
-cat > archivo1.txt - *Modificamos el contenido del archivo*
-Receta: Tortilla Española
-Ingredientes:
-- 4 patatas medianas
-- 6 huevos
-- 1 cebolla grande
-- Aceite de oliva
-- Sal al gusto
-- Pimienta negra
-
-Preparación:
-1. Pelar y cortar las patatas en rodajas finas
-2. Picar la cebolla en juliana
-3. Freír todo a fuego lento hasta que estén tiernas
-4. Batir los huevos y mezclar con las patatas y cebolla
-5. Cuajar la tortilla por ambos lados
-6. Servir caliente o a temperatura ambiente
-
-git status - *Verificamos que el archivo está modificado*
-
-git diff archivo1.txt - *Vemos las diferencias entre la versión actual y la última confirmada*
-
-git add archivo1.txt - *Añadimos los cambios al área de preparación*
-
-git commit -m "Actualizada receta de tortilla con más detalles" - *Confirmamos los cambios*
-
-## Deshacer Cambios
-
-cat > archivo2.txt - *Modificamos incorrectamente el archivo*
-Receta: Flan de Chocolate (ERROR)
-
-git status - *Verificamos que el archivo está modificado*
-
-git restore archivo2.txt - *Descartamos los cambios volviendo a la versión del último commit*
-
-## Repositorios Remotos
-
-git remote add origin https://github.com/usuario/recetas-cocina.git - *Añadimos un repositorio remoto*
-
-git push -u origin main - *Subimos nuestros cambios al remoto y establecemos seguimiento*
-
-## Trabajo Colaborativo
-
-git checkout -b "bebidas" - *Creamos una nueva rama para bebidas*
-
-touch archivo4.txt - *Creamos un archivo para una receta de bebida*
-
-cat > archivo4.txt - *Añadimos contenido al archivo*
-Receta: Sangría Española
-Ingredientes:
-- 1 botella de vino tinto
-- 2 naranjas
-- 1 limón
-- 1 manzana
-- 50g de azúcar
-- 1 ramita de canela
-- Hielo al gusto
-
-Preparación:
-1. Cortar la fruta en trozos pequeños
-2. Mezclar con el vino y el azúcar
-3. Añadir la canela y refrigerar por 2 horas
-4. Servir con hielo
-
-git add archivo4.txt - *Añadimos el archivo al área de preparación*
-
-git commit -m "Añadida receta de sangría española" - *Creamos un commit en la rama bebidas*
-
-git push origin bebidas - *Subimos la rama bebidas al repositorio remoto*
-
-## Etiquetas (Versiones)
-
-git tag -a v1.0 -m "Primera versión del recetario" - *Creamos una etiqueta anotada*
-
-git push origin v1.0 - *Subimos la etiqueta al repositorio remoto*
-
-## Simulación de Trabajo en Equipo
-
-git pull origin main - *Descargamos cambios que podrían haber hecho otros colaboradores*
-
-## Conflictos y Resolución
-
-git checkout main - *Volvemos a la rama principal*
-
-cat > archivo1.txt - *Modificamos el archivo1.txt en main*
-Receta: Tortilla Española Tradicional
-Ingredientes:
-- 4 patatas medianas
-- 6 huevos
-- Aceite de oliva
-- Sal al gusto
-
-Preparación:
-1. Pelar y cortar las patatas en rodajas finas
-2. Freír a fuego lento hasta que estén tiernas
-3. Batir los huevos y mezclar con las patatas
-4. Cuajar la tortilla por ambos lados
-5. La tortilla auténtica no lleva cebolla
-
-git add archivo1.txt - *Añadimos los cambios*
-
-git commit -m "Actualizada receta de tortilla a versión tradicional" - *Confirmamos*
-
-git checkout -b "variantes" - *Creamos otra rama*
-
-cat > archivo1.txt - *Modificamos el mismo archivo en esta rama*
-Receta: Tortilla Española con Variantes
-Ingredientes:
-- 4 patatas medianas
-- 6 huevos
-- 1 cebolla grande (opcional)
-- 100g de pimientos (opcional)
-- Aceite de oliva
-- Sal al gusto
-
-Preparación:
-1. Pelar y cortar las patatas en rodajas finas
-2. Añadir verduras si se desea
-3. Freír todo a fuego lento hasta que esté tierno
-4. Batir los huevos y mezclar
-5. Cuajar la tortilla por ambos lados
-git add archivo1.txt - *Añadimos los cambios*
-
-git commit -m "Añadidas variantes a la receta de tortilla" - *Confirmamos*
-
-git checkout main - *Volvemos a la rama principal*
-
-git merge variantes - *Intentamos fusionar, lo que causará un conflicto*
-
-// Resolvemos el conflicto manualmente editando archivo1.txt
-
-cat > archivo1.txt - *Resolución del conflicto*
-Receta: Tortilla Española (Con opciones)
-Ingredientes:
-- 4 patatas medianas
-- 6 huevos
-- 1 cebolla grande (opcional para versión con cebolla)
-- 100g de pimientos (opcional para versión con verduras)
-- Aceite de oliva
-- Sal al gusto
-
-Preparación:
-1. Pelar y cortar las patatas en rodajas finas
-2. Añadir verduras si se prefiere la versión con cebolla
-3. Freír todo a fuego lento hasta que esté tierno
-4. Batir los huevos y mezclar
-5. Cuajar la tortilla por ambos lados
-6. La versión tradicional no lleva cebolla, pero ambas son deliciosas
-
-git add archivo1.txt - *Marcamos el conflicto como resuelto*
-
-git commit -m "Fusionadas versiones de tortilla con y sin cebolla" - *Confirmamos la resolución*
-
-## Historial y Seguimiento
-
-git log --oneline - *Vemos el historial resumido de commits*
-
-git blame archivo1.txt - *Vemos quién modificó cada línea del archivo*
-
-git show HEAD~1 - *Vemos los detalles del penúltimo commit*
-
-## Limpieza y Gestión Final
-
-git branch -d variantes - *Eliminamos la rama una vez fusionada*
-
-git branch -d postres - *Eliminamos otra rama ya fusionada*
-
-git push origin --delete bebidas - *Eliminamos una rama remota que ya no necesitamos*
-
-git tag -a v1.1 -m "Versión con todas las recetas básicas" - *Creamos una nueva etiqueta*
-
-git push origin v1.1 - *Subimos la nueva etiqueta al repositorio remoto*
+- Esencia de vainilla" > archivo2.txt
+```
+*Creamos un nuevo archivo en la rama postres*
+
+```
+git add archivo2.txt
+```
+*Añade el archivo al área de preparación*
+
+```
+git commit -m "Añadida receta de flan"
+```
+*Crea un commit en la rama postres*
+
+## 5. Fusión de Ramas
+
+```
+git switch main
+```
+*Volvemos a la rama principal*
+
+```
+ls
+```
+*Lista los archivos en el directorio. Notaremos que archivo2.txt no aparece porque existe solo en la rama postres*
+
+```
+git merge postres
+```
+*Incorpora los cambios de la rama "postres" a la rama actual (main). Después de esto, archivo2.txt aparecerá en la rama main*
+
+## 6. Visualización del Historial
+
+```
+git log
+```
+*Muestra el historial completo de commits con detalles como autor, fecha y mensaje*
+
+```
+git log --oneline
+```
+*Muestra el historial resumido, un commit por línea, identificando cada commit con un hash abreviado*
+
+```
+git show HEAD
+```
+*Muestra detalles del último commit (HEAD)*
+
+## 7. Deshacer Cambios
+
+```
+echo "Este es un cambio que no quiero mantener" >> archivo1.txt
+```
+*Hacemos un cambio en archivo1.txt que luego queremos descartar*
+
+```
+git status
+```
+*Veremos que archivo1.txt ha sido modificado*
+
+```
+git restore archivo1.txt
+```
+*Descarta los cambios en archivo1.txt, volviendo a la versión del último commit*
+
+```
+touch archivo3.txt
+echo "Archivo temporal que no quiero" > archivo3.txt
+git add archivo3.txt
+```
+*Creamos un archivo y lo añadimos al área de preparación*
+
+```
+git status
+```
+*Muestra archivo3.txt como preparado para commit*
+
+```
+git restore --staged archivo3.txt
+```
+*Quita archivo3.txt del área de preparación pero mantiene el archivo y sus cambios*
+
+```
+git status
+```
+*Ahora archivo3.txt aparece como sin seguimiento*
+
+## 8. Modificación de Commits
+
+```
+touch archivo4.txt
+echo "Receta de Paella" > archivo4.txt
+git add archivo4.txt
+git commit -m "Receta incompleta"
+```
+*Creamos un archivo, lo añadimos y hacemos un commit*
+
+```
+echo "- 400g de arroz
+- Azafrán
+- Caldo de pescado
+- Mariscos variados" >> archivo4.txt
+```
+*Completamos la receta*
+
+```
+git add archivo4.txt
+git commit --amend -m "Añadida receta completa de paella"
+```
+*Modifica el último commit añadiendo los nuevos cambios y actualizando el mensaje*
+
+## 9. Trabajo con Repositorios Remotos
+
+```
+git remote add origin https://github.com/usuario/proyecto-recetas.git
+```
+*Añade un repositorio remoto llamado "origin" con la URL especificada*
+
+```
+git remote -v
+```
+*Muestra los repositorios remotos configurados con sus URLs*
+
+```
+git push -u origin main
+```
+*Sube los commits locales de la rama main al repositorio remoto y establece la rama para seguimiento*
+
+```
+git fetch origin
+```
+*Descarga cambios del remoto sin fusionarlos, permitiendo ver qué ha cambiado antes de integrar los cambios*
+
+```
+git pull origin main
+```
+*Descarga y fusiona los cambios remotos en la rama actual*
+
+## 10. Etiquetas (Tags)
+
+```
+git tag v1.0
+```
+*Crea una etiqueta ligera en el commit actual, útil para marcar versiones*
+
+```
+git tag -a v1.1 -m "Primera versión estable con múltiples recetas"
+```
+*Crea una etiqueta anotada con mensaje y metadatos adicionales*
+
+```
+git push origin v1.1
+```
+*Publica la etiqueta v1.1 en el repositorio remoto*
+
+## 11. Deshacer Commits
+
+```
+touch archivo5.txt
+echo "Este es un archivo que añadí por error" > archivo5.txt
+git add archivo5.txt
+git commit -m "Archivo añadido por error"
+```
+*Creamos un archivo y lo confirmamos por error*
+
+```
+git log --oneline
+```
+*Vemos el historial y copiamos el hash del commit anterior al erróneo*
+
+```
+git reset --soft HEAD~1
+```
+*Deshace el último commit pero mantiene los cambios en el área de preparación*
+
+```
+git status
+```
+*Veremos que archivo5.txt sigue en el área de preparación*
+
+```
+git reset HEAD archivo5.txt
+```
+*Quita el archivo del área de preparación*
+
+```
+rm archivo5.txt
+```
+*Eliminamos el archivo no deseado*
+
+## 12. Revertir Cambios de Forma Segura
+
+```
+touch archivo6.txt
+echo "Contenido inicial" > archivo6.txt
+git add archivo6.txt
+git commit -m "Añadido archivo6.txt"
+```
+*Creamos un archivo y lo confirmamos*
+
+```
+echo "Cambio que luego querré revertir" > archivo6.txt
+git add archivo6.txt
+git commit -m "Cambio problemático en archivo6.txt"
+```
+*Hacemos un cambio que luego queremos revertir*
+
+```
+git log --oneline
+```
+*Vemos el historial y copiamos el hash del commit problemático*
+
+```
+git revert [hash-del-commit]
+```
+*Crea un nuevo commit que deshace los cambios del commit especificado sin modificar el historial*
+
+## 13. Limpieza y Gestión de Ramas
+
+```
+git branch -d postres
+```
+*Elimina la rama "postres" después de haberla fusionado con main*
+
+```
+git checkout -b nueva-funcionalidad
+```
+*Crea y cambia a una nueva rama en un solo paso*
+
+```
+git branch -a
+```
+*Lista todas las ramas (locales y remotas)*
+
+## 14. Trabajo Colaborativo
+
+```
+git pull
+```
+*Actualiza tu repositorio local con los cambios del remoto (equivalente a git fetch seguido de git merge)*
+
+```
+git push
+```
+*Envía tus commits locales al repositorio remoto*
+
+```
+git fetch --prune
+```
+*Actualiza referencias remotas y elimina referencias a ramas que ya no existen en el remoto*
