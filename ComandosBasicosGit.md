@@ -118,9 +118,9 @@ git remote add nombre url - *Añade un nuevo repositorio remoto*
 
 git remote remove nombre - *Elimina un repositorio remoto*
 
-git pull remoto rama - *Descarga cambios y aplica commits locales encima (evita commits de merge)*
+git pull remoto rama - *Descarga cambios y aplica commits locales encima*
 
-git push remoto rama - *Envía y establece la rama para seguimiento (futuro git pull sin argumentos)*
+git push remoto rama - *Envía y establece la rama para seguimiento*
 
 ## Configuración Avanzada
 
